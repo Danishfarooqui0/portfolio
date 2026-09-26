@@ -1,3 +1,5 @@
+import FadeIn from "./components/FadeIn";
+
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden bg-[#05050a] text-white">
@@ -7,7 +9,7 @@ export default function Home() {
       <div className="pointer-events-none absolute bottom-0 left-1/3 h-[400px] w-[400px] rounded-full bg-purple-600/20 blur-[120px]" />
 
       {/* Navbar */}
-      <nav className="relative z-10 flex items-center justify-between px-6 py-6 md:px-16">
+      <nav className="fixed inset-x-0 top-0 z-50 flex h-20 items-center justify-between border-b border-white/5 bg-[#05050a]/70 px-6 backdrop-blur-md md:px-16">
         <span className="text-lg font-semibold tracking-tight">
           Danish<span className="text-indigo-400">.dev</span>
         </span>
@@ -36,9 +38,9 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative z-10 mx-auto flex min-h-[85vh] max-w-6xl flex-col-reverse items-center justify-center gap-14 px-6 py-16 md:flex-row md:justify-between md:gap-10 md:px-10">
+      <section className="relative z-10 mx-auto flex min-h-[85vh] max-w-6xl flex-col-reverse items-center justify-center gap-14 px-6 pb-16 pt-36 md:flex-row md:justify-between md:gap-10 md:px-10">
         {/* Left: text content */}
-        <div className="flex max-w-xl flex-col items-center text-center md:items-start md:text-left">
+        <FadeIn className="flex max-w-xl flex-col items-center text-center md:items-start md:text-left">
           <span className="mb-6 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs text-white/60 backdrop-blur-sm">
             🟢 Available for new opportunities
           </span>
@@ -81,10 +83,14 @@ export default function Home() {
               </span>
             ))}
           </div>
-        </div>
+        </FadeIn>
 
         {/* Right: profile photo */}
-        <div className="relative flex shrink-0 items-center justify-center">
+        <FadeIn
+          className="relative flex shrink-0 items-center justify-center"
+          delay={0.15}
+          y={0}
+        >
           <div className="relative h-56 w-56 overflow-hidden rounded-full border-4 border-white/10 md:h-72 md:w-72 lg:h-80 lg:w-80">
             <img
               src="/profile.png"
@@ -92,41 +98,45 @@ export default function Home() {
               className="h-full w-full object-cover"
             />
           </div>
-        </div>
+        </FadeIn>
       </section>
 
       {/* About Section */}
       <section id="about" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:px-10">
-        <span className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
-          About Me
-        </span>
-        <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
-          Building reliable software, end to end
-        </h2>
-        <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/60">
-          I&apos;m a Full Stack Developer who enjoys working across the whole
-          stack — Java and Spring Boot APIs on the backend, React and
-          Next.js interfaces on the frontend, and PHP with Laravel when a
-          project calls for it. I like taking an idea from a rough
-          requirement to something real people actually use: a proper
-          database, a clean API, and an interface that feels fast and easy
-          to use.
-        </p>
-        <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/60">
-          Right now I&apos;m building three things at once — an LMS, a CRM,
-          and a college website — each on its own stack, with real
-          databases and APIs behind them.
-        </p>
+        <FadeIn>
+          <span className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
+            About Me
+          </span>
+          <h2 className="mt-3 max-w-2xl text-3xl font-bold md:text-4xl">
+            Building reliable software, end to end
+          </h2>
+          <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/60">
+            I&apos;m a Full Stack Developer who enjoys working across the whole
+            stack — Java and Spring Boot APIs on the backend, React and
+            Next.js interfaces on the frontend, and PHP with Laravel when a
+            project calls for it. I like taking an idea from a rough
+            requirement to something real people actually use: a proper
+            database, a clean API, and an interface that feels fast and easy
+            to use.
+          </p>
+          <p className="mt-4 max-w-3xl text-lg leading-relaxed text-white/60">
+            Right now I&apos;m building three things at once — an LMS, a CRM,
+            and a college website — each on its own stack, with real
+            databases and APIs behind them.
+          </p>
+        </FadeIn>
       </section>
 
       {/* Skills Section */}
       <section id="skills" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:px-10">
-        <span className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
-          Skills
-        </span>
-        <h2 className="mt-3 mb-12 max-w-2xl text-3xl font-bold md:text-4xl">
-          Tools I build with
-        </h2>
+        <FadeIn>
+          <span className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
+            Skills
+          </span>
+          <h2 className="mt-3 mb-12 max-w-2xl text-3xl font-bold md:text-4xl">
+            Tools I build with
+          </h2>
+        </FadeIn>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {[
@@ -136,43 +146,44 @@ export default function Home() {
             },
             {
               title: "Frontend",
-              items: ["React", "Next.js", "Tailwind CSS"],
+              items: ["React", "Next.js", "Bootstrap","JavaScript"],
             },
             {
               title: "Database & Tools",
-              items: ["MySQL", "Git", "REST APIs"],
+              items: ["MySQL", "Git Hub", "Fast APIs","VS Code"],
             },
-          ].map((group) => (
-            <div
-              key={group.title}
-              className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-sm transition hover:border-indigo-400/30 hover:bg-white/[0.04]"
-            >
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white/50">
-                {group.title}
-              </h3>
-              <div className="flex flex-wrap gap-2">
-                {group.items.map((item) => (
-                  <span
-                    key={item}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-sm text-white/80"
-                  >
-                    {item}
-                  </span>
-                ))}
+          ].map((group, i) => (
+            <FadeIn key={group.title} delay={i * 0.1}>
+              <div className="rounded-2xl border border-white/10 bg-white/[0.02] p-6 backdrop-blur-sm transition hover:border-indigo-400/30 hover:bg-white/[0.04]">
+                <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-white/50">
+                  {group.title}
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 text-sm text-white/80"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </section>
 
       {/* Projects Section */}
       <section id="projects" className="relative z-10 mx-auto max-w-5xl px-6 py-24 md:px-10">
-        <span className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
-          Projects
-        </span>
-        <h2 className="mt-3 mb-12 max-w-2xl text-3xl font-bold md:text-4xl">
-          Things I&apos;ve built
-        </h2>
+        <FadeIn>
+          <span className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
+            Projects
+          </span>
+          <h2 className="mt-3 mb-12 max-w-2xl text-3xl font-bold md:text-4xl">
+            Things I&apos;ve built
+          </h2>
+        </FadeIn>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {[
@@ -197,76 +208,82 @@ export default function Home() {
                 "A full college website covering admissions, courses, and contact/enquiry information — built on PHP and Laravel with a real database behind it.",
               tech: ["PHP", "Laravel", "MySQL"],
             },
-          ].map((project) => (
-            <div
-              key={project.title}
-              className="group flex flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-sm transition hover:border-cyan-400/30 hover:bg-white/[0.04]"
-            >
-              <span className="mb-3 w-fit rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-cyan-300/80">
-                {project.tag}
-              </span>
-              <h3 className="text-xl font-semibold text-white">
-                {project.title}
-              </h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">
-                {project.description}
-              </p>
-              <div className="mt-6 flex flex-wrap gap-2">
-                {project.tech.map((tech) => (
-                  <span
-                    key={tech}
-                    className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-white/50"
-                  >
-                    {tech}
-                  </span>
-                ))}
+          ].map((project, i) => (
+            <FadeIn key={project.title} delay={i * 0.1}>
+              <div className="group flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.02] p-7 backdrop-blur-sm transition hover:border-cyan-400/30 hover:bg-white/[0.04]">
+                <span className="mb-3 w-fit rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-cyan-300/80">
+                  {project.tag}
+                </span>
+                <h3 className="text-xl font-semibold text-white">
+                  {project.title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">
+                  {project.description}
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {project.tech.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-white/10 bg-white/[0.03] px-3 py-1 text-xs text-white/50"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </section>
 
       {/* Contact Section */}
       <section id="contact" className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center md:px-10">
-        <span className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
-          Contact
-        </span>
-        <h2 className="mt-3 text-3xl font-bold md:text-4xl">
-          Let&apos;s build something together
-        </h2>
-        <p className="mt-4 text-white/60">
-          Have a project in mind, or just want to say hi? Reach out.
-        </p>
+        <FadeIn>
+          <span className="text-sm font-semibold uppercase tracking-widest text-indigo-400">
+            Contact
+          </span>
+          <h2 className="mt-3 text-3xl font-bold md:text-4xl">
+            Let&apos;s build something together
+          </h2>
+          <p className="mt-4 text-white/60">
+            Have a project in mind, or just want to say hi? Reach out.
+          </p>
 
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <a
-            href="mailto:farooquidanish04@gmail.com"
-            className="rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 px-8 py-3 text-sm font-medium text-white shadow-lg shadow-indigo-500/30 transition hover:scale-105"
-          >
-            Email Me
-          </a>
-          <a
-            href="https://linkedin.com/in/your-profile"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/90 transition hover:bg-white/10"
-          >
-            LinkedIn
-          </a>
-          <a
-            href="https://github.com/Danishfarooqui0"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/90 transition hover:bg-white/10"
-          >
-            GitHub
-          </a>
-        </div>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <a
+              href="mailto:farooquidanish04@gmail.com"
+              className="rounded-full bg-gradient-to-r from-indigo-500 to-cyan-500 px-8 py-3 text-sm font-medium text-white shadow-lg shadow-indigo-500/30 transition hover:scale-105"
+            >
+              Email Me
+            </a>
+            <span
+              className="cursor-not-allowed rounded-full border border-white/10 px-8 py-3 text-sm font-medium text-white/40"
+              aria-disabled="true"
+            >
+              LinkedIn
+            </span>
+            <a
+              href="https://github.com/Danishfarooqui0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/90 transition hover:bg-white/10"
+            >
+              GitHub
+            </a>
+            <a
+              href="/resume.pdf"
+              download
+              className="rounded-full border border-white/20 px-8 py-3 text-sm font-medium text-white/90 transition hover:bg-white/10"
+            >
+              Download Resume
+            </a>
+          </div>
+        </FadeIn>
       </section>
 
       {/* Footer */}
       <footer className="relative z-10 border-t border-white/5 py-8 text-center text-xs text-white/30">
-        © {new Date().getFullYear()} Danish. Built with Next.js.
+        © {new Date().getFullYear()} Danish. Web Tech Solution.
       </footer>
     </main>
   );
